@@ -1,11 +1,12 @@
 import sys, os, time
 from pathlib import Path
 from os import path
-sys.path.append(path.dirname(path.abspath(__file__)))
+# Change only if you plan to move the Dependencies folder, default sys.path: ../Dependencies/table_gen.py
+sys.path.extend(['.', path.dirname(path.abspath(__file__))])
 from Dependencies.table_gen import table_main
 
-# Change based on chip, do NOT change the extension ('.cmp')
-FILE_NAME = 'Xor'
+# Change based on chip, default file extension '.cmp'
+FILE_NAME = 'Xor' + '.cmp'
 # Change the name of the directory where you want to save the file
 DIR_NAME = 'bin'
 
@@ -57,9 +58,8 @@ def directory_creation_handling(DIR_NAME: str) -> int:
 # Takes the user input and converts it into an array,
 # To make the work easier on the dependant file 'table_gen.py'
 def combination_handling() -> list:
-    logic_combination = input("Enter the combination, i.e. (ignore <>) <a, NOT, AND, b, NOT, AND c>:\n")
-
-    if (len(logic_combination) == 0):
+    logic_combination = input("Enter the combination, i.e. (ignore <>) <a NOT AND b NOT AND c>:\n")
+    if len(logic_combination) == 0:
         sys.exit("Combination not valid, not enough arguments, exiting...")
     if any(char.isdigit() for char in logic_combination):
         time.sleep(0.1)
