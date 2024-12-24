@@ -5,12 +5,12 @@ class LogicGates:
     def NOT(input_table: list) -> list:
         output_table = [int(not input) for input in input_table]
         return output_table
-
+        
     def AND(first_input_table: list, second_input_table) -> list:
         for i, j in zip(first_input_table, second_input_table):
             output_table.append(int(i == 1 and j == 1))
         return output_table
-
+'''
     def NAND(first_input_table: list, second_input_table) -> list:
 
         return output_table
@@ -30,7 +30,7 @@ class LogicGates:
     def XNOR(first_input_table: list, second_input_table) -> list:
 
         return output_table
-
+'''
 LOGIC_GATES  = ['NOT','AND','NAND','OR','XOR','NOR','XNOR']
 LOGIC_INPUTS = list(string.ascii_uppercase)
 
