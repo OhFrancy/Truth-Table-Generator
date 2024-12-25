@@ -2,7 +2,7 @@ import sys, os, time
 from pathlib import Path
 from os import path
 # Change only if you plan to move the Dependencies folder, default sys.path: ../Dependencies/table_gen.py
-sys.path.extend(['.', path.dirname(path.abspath(__file__))])
+sys.path.insert(0, path.dirname(path.dirname(path.abspath(__file__))))
 from Dependencies.table_gen import table_main
 
 # Change based on chip, default file extension '.cmp'
@@ -42,7 +42,7 @@ def create_directory() -> int:
 # To return, if successful, the name of the dir that will be created.
 def directory_creation_handling(DIR_NAME: str) -> int:
     try:
-        os.mkdir(DIR_NAME)
+        os.mkdir(''.join(sys.path[0]) + '/' + DIR_NAME)
         print("Created a directory, proceeding...")
         return 0
     except FileExistsError:
